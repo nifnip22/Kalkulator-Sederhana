@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto+Mono&display=swap" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<title>P2-SPK-RPL (Hanif Ahmad | XII-RPL)</title>
+		<style>
+			body {
+				font-family: 'Noto Sans', sans-serif;
+			}
+
+			#calculator {
+				font-family: 'Roboto Mono', monospace;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="p-8">
+			<div class="mb-10 text-center">
+				<h1 class="text-4xl text-center font-extrabold">Aplikasi Kalkulator Berbasis Website</h1>
+				<p class="text-lg font-medium mt-2">Hanif Ahmad - XII-RPL</p>
+			</div>
+			<div class="mx-auto bg-slate-400 w-full xl:w-2/5 h-auto rounded-2xl shadow-2xl drop-shadow-2xl p-4" id="calculator">
+				<div class="monitor flex items-center justify-end bg-gray-100 w-full h-20 rounded-2xl p-2 mb-6">
+					<h1 class="text-4xl font-bold" id="valueDisplay">0</h1>
+				</div>
+				<div class="grid grid-cols-4 gap-x-3 gap-y-6 text-2xl font-semibold">
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('7')">7</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('8')">8</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('9')">9</button>
+					<button class="bg-sky-400 hover:bg-sky-600 text-gray-100 duration-300 px-6 py-4 rounded-full" onclick="appendToDisplay('+')">+</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('4')">4</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('5')">5</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('6')">6</button>
+					<button class="bg-sky-400 hover:bg-sky-600 text-gray-100 duration-300 px-6 py-4 rounded-full" onclick="appendToDisplay('-')">-</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('1')">1</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('2')">2</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('3')">3</button>
+					<button class="bg-sky-400 hover:bg-sky-600 text-gray-100 duration-300 px-6 py-4 rounded-full" onclick="appendToDisplay('*')">x</button>
+					<button class="col-span-2 bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('0')">0</button>
+					<button class="bg-gray-200 hover:bg-orange-200 hover:ring-2 hover:ring-orange-500 duration-300 px-6 py-4 rounded-2xl" onclick="appendToDisplay('.')">.</button>
+					<button class="bg-sky-400 hover:bg-sky-600 text-gray-100 duration-300 px-6 py-4 rounded-full" onclick="appendToDisplay('/')">/</button>
+					<button class="col-span-1 bg-orange-400 text-gray-100 hover:bg-orange-500 duration-300 px-6 py-4 rounded-full" onclick="clearDisplay()">C</button>
+					<button class="col-span-3 bg-green-500 text-gray-100 hover:bg-green-600 duration-300 px-6 py-4 rounded-full" onclick="calculateResult()">=</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Calculation JS Function -->
+		<script>
+			// JavaScript code to handle calculator logic
+			let displayValue = '0';
+
+			function updateDisplay() {
+				document.getElementById('valueDisplay').innerText = displayValue;
+			}
+
+			function appendToDisplay(value) {
+				if (displayValue === '0') {
+					displayValue = value;
+				} else {
+					displayValue += value;
+				}
+				updateDisplay();
+			}
+
+			function calculateResult() {
+				try {
+					displayValue = eval(displayValue).toString();
+					updateDisplay();
+				} catch (error) {
+					displayValue = 'Error';
+					updateDisplay();
+				}
+			}
+
+			function clearDisplay() {
+				displayValue = '0';
+				updateDisplay();
+			}
+		</script>
+	</body>
+</html>
